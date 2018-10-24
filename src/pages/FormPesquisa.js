@@ -1,42 +1,81 @@
 import React, { Component } from "react";
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import t from "tcomb-form-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Alert,
+  StyleSheet
+} from "react-native";
+
+
+import enumEstados from "../helps/estados";
+const estados = t.enums(enumEstados);
+
+const Form = t.form.Form;
+
+const Search = t.struct({
+  cidade: t.maybe(t.String),
+  estado: t.maybe(estados)
+});
+
+const options = {
+  i18n: {
+    optional: ""
+  }
+};
 
 export default class FormPesquisa extends Component {
-  state = {
-    cidade: "",
-    estado: ""
+  handleSubmit = () => {
+    const value = this.refs.form.getValue();
+
+    if (!value.cidade && !value.estado) {
+      Alert.alert(
+        "Nenhum Valor",
+        "Preencha ao menos um campo para realizar a consultar",
+        [
+          {
+            text: "OK",
+            onPress: () => {}
+          }
+        ]
+      );
+      return;
+    }
+
+    this.props.navigation.navigate("ListaDeCidades", {
+      cidade: value.cidade,
+      estado: value.estado ? enumEstados[value.estado] : null
+    });
   };
 
   render() {
-    const { cidade, estado } = this.state;
-
     return (
-      <View>
-        <Text>Cidade</Text>
-        <TextInput
-          style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
-          onChangeText={cidade => this.setState({ cidade })}
-          value={this.state.cidade}
-        />
-
-        <Text>Estado</Text>
-        <TextInput
-          style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
-          onChangeText={estado => this.setState({ estado })}
-          value={this.state.estado}
-        />
+      <View style={style.container}>
+        <Form ref={"form"} type={Search} options={options} />
 
         <TouchableOpacity
-          onPress={() => {
-            this.props.navigation.navigate("ListaDeCidades", {
-              cidade,
-              estado
-            });
-          }}
+          style={style.btnPesquisar}
+          onPress={this.handleSubmit}
         >
-          <Text>Buscar</Text>
+          <Text style={{ color: "#FFF", fontWeight: "500" }}>Buscar</Text>
         </TouchableOpacity>
       </View>
     );
   }
 }
+
+const style = StyleSheet.create({
+  container: {
+    padding: 20,
+    backgroundColor: "#FFF",
+    flex: 1
+  },
+  btnPesquisar: {
+    backgroundColor: "#1E88E5",
+    borderRadius: 5,
+    padding: 15,
+    justifyContent: "center",
+    alignItems: "center"
+  }
+});

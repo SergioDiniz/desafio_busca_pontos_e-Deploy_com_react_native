@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 
 import api from "../services/api";
 
@@ -23,12 +23,31 @@ export default class PontuacaoDaCidade extends Component {
 
   render() {
     return (
-      <View>
-        <Text>
+      <View style={style.container}>
+        <Text style={style.text}>
           Pontuacao da cidade: {this.state.item.Nome} - {this.state.item.Estado}
         </Text>
-        <Text>{this.state.pontuacao}</Text>
+        <Text style={style.score}>{this.state.pontuacao}</Text>
       </View>
     );
   }
 }
+
+const style = StyleSheet.create({
+  container: {
+    backgroundColor: "#fff",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 20,
+    flex: 1
+  },
+  text: {
+    fontSize: 18,
+    textAlign: "center"
+  },
+  score: {
+    fontSize: 34,
+    textAlign: "center",
+    textDecorationLine: "underline"
+  }
+});
