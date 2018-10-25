@@ -6,15 +6,11 @@ O objetivo deste projeto é desenvolver um aplicativo mobile para consultar e ex
 
 - Android
 
-<img  src="prints/android1.png?raw=true"  width="200"  alt="Página de consultar cidade e estado">
-<img  src="prints/android2.png?raw=true"  width="200"  alt="Resultado do filtro de cidade/estado">
-<img  src="prints/android3.png?raw=true"  width="200"  alt="Pontuação da cidade">
+<img  src="prints/android1.png?raw=true"  width="200"  alt="Página de consultar cidade e estado"><img  src="prints/android2.png?raw=true"  width="200"  alt="Resultado do filtro de cidade/estado"><img  src="prints/android3.png?raw=true"  width="200"  alt="Pontuação da cidade">
 
 - iOS
 
-<img  src="prints/ios1.jpeg?raw=true"  width="200"  alt="Página de consultar cidade e estado">
-<img  src="prints/ios2.jpeg?raw=true"  width="200"  alt="Resultado do filtro de cidade/estado">
-<img  src="prints/ios3.jpeg?raw=true"  width="200"  alt="Pontuação da cidade">
+<img  src="prints/ios1.jpeg?raw=true"  width="200"  alt="Página de consultar cidade e estado"><img  src="prints/ios2.jpeg?raw=true"  width="200"  alt="Resultado do filtro de cidade/estado"><img  src="prints/ios3.jpeg?raw=true"  width="200"  alt="Pontuação da cidade">
 
 ### Tecnologias e Dependências
 
